@@ -1,0 +1,9 @@
+{
+  "model_requested": "gemini-3.1-pro-preview",
+  "model_returned": "gemini-3.1-pro-preview",
+  "finish_reason": "stop",
+  "prompt_tokens": 82889,
+  "completion_tokens": 5922,
+  "total_tokens": 88811,
+  "output_characters": 7652
+}

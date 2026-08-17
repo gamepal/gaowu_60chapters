@@ -1,0 +1,11 @@
+{
+  "source": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/original/原稿_高武圈传来噩耗.txt",
+  "chapter_count": 270,
+  "pack_count": 30,
+  "chapters_per_pack": 9,
+  "first_heading": "第001章 合法打药",
+  "last_heading": "第270章 测试结果，执法一道",
+  "total_characters": 678935,
+  "mean_characters_per_chapter": 2514.57,
+  "mean_dialogue_line_ratio": 0.3912
+}

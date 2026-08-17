@@ -1,0 +1,7 @@
+{
+  "calls": 30,
+  "model": "gpt-5",
+  "prompt_tokens": 869385,
+  "completion_tokens": 233819,
+  "total_tokens": 1103204
+}

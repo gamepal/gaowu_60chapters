@@ -1,0 +1,2 @@
+3f7930be4253a6f45b02597c3386415497c1e19fc1d3807ed7d0b109b9ac95e5  /home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/style_sample_corpus.md
+c9e692a9a2ada5343517fbf301fe1a361f2c4dedc738d794e3eb41c87b33b621  /home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/style_sample_manifest.json

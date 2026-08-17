@@ -1,0 +1,16 @@
+{
+  "chapter_count": 60,
+  "numbers_are_1_to_60": true,
+  "missing_numbers": [],
+  "duplicate_numbers": [],
+  "duplicate_titles": [],
+  "all_have_source_coverage": true,
+  "all_have_3_to_6_scenes": true,
+  "all_have_closing_hooks": true,
+  "all_have_continuity_in_out": true,
+  "target_length_min": 4200,
+  "target_length_max": 4800,
+  "target_length_total": 268400,
+  "coverage_pattern_recognized": 60,
+  "passed": true
+}

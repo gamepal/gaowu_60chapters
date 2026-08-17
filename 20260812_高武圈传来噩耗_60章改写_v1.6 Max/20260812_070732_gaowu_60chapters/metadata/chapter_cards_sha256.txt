@@ -1,0 +1,1 @@
+7ae346a5d7d1fdda6d1f2c3a36e974cdf5c3911e87f7b679b0b81a370517ce71  /home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/outline/chapter_cards.json

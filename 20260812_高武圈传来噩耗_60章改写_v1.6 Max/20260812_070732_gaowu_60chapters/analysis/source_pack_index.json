@@ -1,0 +1,242 @@
+[
+  {
+    "pack_id": 1,
+    "first_chapter": 1,
+    "last_chapter": 9,
+    "chapter_count": 9,
+    "characters": 21361,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_01_ch001-009.md"
+  },
+  {
+    "pack_id": 2,
+    "first_chapter": 10,
+    "last_chapter": 18,
+    "chapter_count": 9,
+    "characters": 20720,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_02_ch010-018.md"
+  },
+  {
+    "pack_id": 3,
+    "first_chapter": 19,
+    "last_chapter": 27,
+    "chapter_count": 9,
+    "characters": 21494,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_03_ch019-027.md"
+  },
+  {
+    "pack_id": 4,
+    "first_chapter": 28,
+    "last_chapter": 36,
+    "chapter_count": 9,
+    "characters": 20474,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_04_ch028-036.md"
+  },
+  {
+    "pack_id": 5,
+    "first_chapter": 37,
+    "last_chapter": 45,
+    "chapter_count": 9,
+    "characters": 20545,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_05_ch037-045.md"
+  },
+  {
+    "pack_id": 6,
+    "first_chapter": 46,
+    "last_chapter": 54,
+    "chapter_count": 9,
+    "characters": 21867,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_06_ch046-054.md"
+  },
+  {
+    "pack_id": 7,
+    "first_chapter": 55,
+    "last_chapter": 63,
+    "chapter_count": 9,
+    "characters": 21105,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_07_ch055-063.md"
+  },
+  {
+    "pack_id": 8,
+    "first_chapter": 64,
+    "last_chapter": 72,
+    "chapter_count": 9,
+    "characters": 24195,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_08_ch064-072.md"
+  },
+  {
+    "pack_id": 9,
+    "first_chapter": 73,
+    "last_chapter": 81,
+    "chapter_count": 9,
+    "characters": 22938,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_09_ch073-081.md"
+  },
+  {
+    "pack_id": 10,
+    "first_chapter": 82,
+    "last_chapter": 90,
+    "chapter_count": 9,
+    "characters": 21787,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_10_ch082-090.md"
+  },
+  {
+    "pack_id": 11,
+    "first_chapter": 91,
+    "last_chapter": 99,
+    "chapter_count": 9,
+    "characters": 21154,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_11_ch091-099.md"
+  },
+  {
+    "pack_id": 12,
+    "first_chapter": 100,
+    "last_chapter": 108,
+    "chapter_count": 9,
+    "characters": 21757,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_12_ch100-108.md"
+  },
+  {
+    "pack_id": 13,
+    "first_chapter": 109,
+    "last_chapter": 117,
+    "chapter_count": 9,
+    "characters": 25270,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_13_ch109-117.md"
+  },
+  {
+    "pack_id": 14,
+    "first_chapter": 118,
+    "last_chapter": 126,
+    "chapter_count": 9,
+    "characters": 23907,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_14_ch118-126.md"
+  },
+  {
+    "pack_id": 15,
+    "first_chapter": 127,
+    "last_chapter": 135,
+    "chapter_count": 9,
+    "characters": 21877,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_15_ch127-135.md"
+  },
+  {
+    "pack_id": 16,
+    "first_chapter": 136,
+    "last_chapter": 144,
+    "chapter_count": 9,
+    "characters": 24397,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_16_ch136-144.md"
+  },
+  {
+    "pack_id": 17,
+    "first_chapter": 145,
+    "last_chapter": 153,
+    "chapter_count": 9,
+    "characters": 20901,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_17_ch145-153.md"
+  },
+  {
+    "pack_id": 18,
+    "first_chapter": 154,
+    "last_chapter": 162,
+    "chapter_count": 9,
+    "characters": 21808,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_18_ch154-162.md"
+  },
+  {
+    "pack_id": 19,
+    "first_chapter": 163,
+    "last_chapter": 171,
+    "chapter_count": 9,
+    "characters": 22351,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_19_ch163-171.md"
+  },
+  {
+    "pack_id": 20,
+    "first_chapter": 172,
+    "last_chapter": 180,
+    "chapter_count": 9,
+    "characters": 21399,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_20_ch172-180.md"
+  },
+  {
+    "pack_id": 21,
+    "first_chapter": 181,
+    "last_chapter": 189,
+    "chapter_count": 9,
+    "characters": 22434,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_21_ch181-189.md"
+  },
+  {
+    "pack_id": 22,
+    "first_chapter": 190,
+    "last_chapter": 198,
+    "chapter_count": 9,
+    "characters": 22384,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_22_ch190-198.md"
+  },
+  {
+    "pack_id": 23,
+    "first_chapter": 199,
+    "last_chapter": 207,
+    "chapter_count": 9,
+    "characters": 23871,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_23_ch199-207.md"
+  },
+  {
+    "pack_id": 24,
+    "first_chapter": 208,
+    "last_chapter": 216,
+    "chapter_count": 9,
+    "characters": 23004,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_24_ch208-216.md"
+  },
+  {
+    "pack_id": 25,
+    "first_chapter": 217,
+    "last_chapter": 225,
+    "chapter_count": 9,
+    "characters": 22250,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_25_ch217-225.md"
+  },
+  {
+    "pack_id": 26,
+    "first_chapter": 226,
+    "last_chapter": 234,
+    "chapter_count": 9,
+    "characters": 22722,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_26_ch226-234.md"
+  },
+  {
+    "pack_id": 27,
+    "first_chapter": 235,
+    "last_chapter": 243,
+    "chapter_count": 9,
+    "characters": 28488,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_27_ch235-243.md"
+  },
+  {
+    "pack_id": 28,
+    "first_chapter": 244,
+    "last_chapter": 252,
+    "chapter_count": 9,
+    "characters": 23097,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_28_ch244-252.md"
+  },
+  {
+    "pack_id": 29,
+    "first_chapter": 253,
+    "last_chapter": 261,
+    "chapter_count": 9,
+    "characters": 26761,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_29_ch253-261.md"
+  },
+  {
+    "pack_id": 30,
+    "first_chapter": 262,
+    "last_chapter": 270,
+    "chapter_count": 9,
+    "characters": 22617,
+    "file": "/home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/analysis/source_packs/pack_30_ch262-270.md"
+  }
+]

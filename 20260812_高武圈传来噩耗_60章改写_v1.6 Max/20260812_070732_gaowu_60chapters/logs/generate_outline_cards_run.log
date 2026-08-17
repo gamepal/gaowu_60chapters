@@ -1,0 +1,37 @@
+OK pack=05
+OK pack=03
+OK pack=02
+OK pack=01
+OK pack=04
+OK pack=06
+OK pack=09
+OK pack=07
+OK pack=08
+OK pack=10
+OK pack=13
+OK pack=11
+OK pack=12
+OK pack=14
+OK pack=15
+OK pack=19
+OK pack=16
+OK pack=18
+OK pack=17
+OK pack=20
+OK pack=21
+OK pack=22
+OK pack=23
+OK pack=24
+OK pack=25
+OK pack=26
+OK pack=30
+OK pack=27
+OK pack=28
+OK pack=29
+{
+  "calls": 30,
+  "model": "gpt-5",
+  "prompt_tokens": 869385,
+  "completion_tokens": 233819,
+  "total_tokens": 1103204
+}

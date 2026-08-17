@@ -1,0 +1,2 @@
+60bc781687dc49898064aae9d3b506b406cc0accdc1ef34332576cc1cdfd065b  /home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/final/高武圈传来噩耗_60章重构版.md
+9c640c507db6a05c1068b4004ced436e0865f5198281212452988295fab20584  /home/ubuntu/novel-rewriter/runs/manus/20260812_070732_gaowu_60chapters/final/任务执行报告.md

@@ -1,0 +1,8 @@
+{
+  "calls": 60,
+  "model": "claude-sonnet-4-6",
+  "total_characters": 330143,
+  "prompt_tokens": 2164253,
+  "completion_tokens": 362524,
+  "total_tokens": 2526777
+}
