@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>爽文工坊 Studio</title>
+<style>
+  :root { --bg:#f6f5f2; --panel:#fff; --ink:#1d1d1f; --muted:#6b6b70; --line:#e3e1dc; --accent:#d9480f; --ok:#2b8a3e; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#151517; --panel:#1f1f22; --ink:#ececec; --muted:#9a9aa0; --line:#333338; --accent:#ff7a3d; --ok:#5cc272; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.6 -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  header { padding:16px 20px; border-bottom:1px solid var(--line); display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  header h1 { font-size:18px; margin:0; }
+  header .status { color:var(--muted); font-size:13px; }
+  main { max-width:1280px; margin:0 auto; padding:16px; display:grid; gap:16px; }
+  section { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px; }
+  h2 { font-size:15px; margin:0 0 12px; }
+  textarea, input { width:100%; background:var(--bg); color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:8px; font:inherit; }
+  textarea { min-height:180px; }
+  button { background:var(--accent); color:#fff; border:0; border-radius:6px; padding:8px 14px; font:inherit; cursor:pointer; }
+  button.secondary { background:transparent; color:var(--ink); border:1px solid var(--line); }
+  button:disabled { opacity:.5; cursor:not-allowed; }
+  .row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .board { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px; }
+  .card { border:1px solid var(--line); border-radius:8px; padding:12px; display:flex; flex-direction:column; gap:8px; min-width:0; }
+  .card.recommended { border-color:var(--accent); }
+  .score { font-size:28px; font-weight:700; }
+  .dims { font-size:13px; color:var(--muted); display:grid; grid-template-columns:1fr auto; gap:2px 8px; }
+  .prose { white-space:pre-wrap; max-height:360px; overflow:auto; background:var(--bg); padding:8px; border-radius:6px; font-size:14px; }
+  .warn { color:var(--accent); font-size:13px; }
+  .log { font:12px/1.5 ui-monospace, monospace; max-height:220px; overflow:auto; color:var(--muted); white-space:pre-wrap; }
+  .chapters { display:grid; grid-template-columns:repeat(auto-fill, minmax(64px, 1fr)); gap:6px; }
+  .chip { text-align:center; padding:6px 0; border:1px solid var(--line); border-radius:6px; font-size:13px; cursor:pointer; color:var(--muted); }
+  .chip.done { border-color:var(--ok); color:var(--ok); }
+  .hidden { display:none; }
+  progress { width:100%; }
+</style>
+</head>
+<body>
+<header>
+  <h1>爽文工坊 Studio</h1>
+  <span class="status" id="status">未开始</span>
+  <span style="flex:1"></span>
+  <input id="runIdInput" placeholder="输入 run_id 打开已有任务" style="width:240px">
+  <button class="secondary" id="openBtn">打开</button>
+</header>
+<main>
+  <section id="submitSec">
+    <h2>1. 提交原始 Ch1-3</h2>
+    <div class="row" style="margin-bottom:8px">
+      <input id="title" placeholder="书名" style="flex:1">
+      <input id="totalChapters" type="number" value="60" min="12" step="12" style="width:110px" title="总章数">
+    </div>
+    <textarea id="raw" placeholder="粘贴原始第1-3章正文……"></textarea>
+    <div class="row" style="margin-top:8px"><button id="startBtn">开始三路赛马</button></div>
+  </section>
+
+  <section id="boardSec" class="hidden">
+    <h2>2. 三路赛马看板</h2>
+    <div id="recommendation" class="warn"></div>
+    <div class="board" id="board"></div>
+    <div id="selectBox" class="hidden" style="margin-top:12px">
+      <textarea id="notes" placeholder="（可选）给节拍器的主编批注，例如：把方案C的马屁精小弟缝进来" style="min-height:60px"></textarea>
+    </div>
+  </section>
+
+  <section id="progressSec" class="hidden">
+    <h2>3. 60章滚动连载</h2>
+    <progress id="bar" max="60" value="0"></progress>
+    <div class="row" style="margin:8px 0"><span id="progressText" class="status"></span><span style="flex:1"></span>
+      <button class="secondary" id="resumeBtn">断点续跑</button>
+      <a id="exportLink" target="_blank"><button class="secondary">导出全书</button></a></div>
+    <div class="chapters" id="chapters"></div>
+    <div id="chapterView" class="prose hidden" style="margin-top:12px; max-height:520px"></div>
+  </section>
+
+  <section>
+    <h2>事件流</h2>
+    <div class="log" id="log"></div>
+  </section>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+let runId = null, source = null;
+const DIMS = [["zero_grievance_score","零憋屈",20],["villain_punchability","反派欠揍",20],["payoff_velocity","爽点兑现",25],["colloquial_humor_density","大白话密度",20],["cliffhanger_pull","章末钩子",15]];
+const LABELS = {"2A":"策略1：保核改写","2B":"策略2：保值重建","2C":"策略3：种子重创"};
+
+function log(msg) { const el = $("log"); el.textContent += msg + "\n"; el.scrollTop = el.scrollHeight; }
+async function api(path, opts={}) {
+  const res = await fetch(path, {headers:{"Content-Type":"application/json"}, ...opts});
+  if (!res.ok) throw new Error((await res.json().catch(()=>({detail:res.statusText}))).detail);
+  return res.headers.get("content-type")?.includes("json") ? res.json() : res.text();
+}
+function esc(s) { return String(s ?? "").replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+
+async function openRun(id) {
+  runId = id; history.replaceState(null, "", "#" + id);
+  $("exportLink").href = `/api/runs/${id}/export`;
+  if (source) source.close();
+  source = new EventSource(`/api/runs/${id}/events`);
+  source.onmessage = () => {};
+  ["stage","branch_done","branch_failed","judged","interrupt","selected","arc_planned","chapter_started","chapter_done","chapter_expanding","slice_failed","error","finished","completed"].forEach(name =>
+    source.addEventListener(name, (e) => { const d = JSON.parse(e.data); log(`[${name}] ${d.message || d.branch || d.chapter || d.error || ""}`); if (name === "finished") source.close(); refresh(); }));
+  await refresh();
+}
+
+async function refresh() {
+  if (!runId) return;
+  const s = await api(`/api/runs/${runId}`);
+  $("status").textContent = `run ${s.run_id} · ${s.status} · ${s.stage || ""}` + (s.usage ? ` · $${s.usage.cost_usd}` : "");
+  if (["judge","awaiting_selection"].includes(s.stage) || s.winning_branch) await renderBoard(s);
+  if (s.winning_branch) {
+    $("progressSec").classList.remove("hidden");
+    const p = s.progress; $("bar").max = p.total_chapters; $("bar").value = p.chapters_written;
+    $("progressText").textContent = `细纲 ${p.arcs_planned}/${p.total_arcs} 卷 · 正文 ${p.chapters_written}/${p.total_chapters} 章`;
+    const list = await api(`/api/runs/${runId}/chapters`);
+    const done = new Set(list.map(c => c.chapter));
+    $("chapters").innerHTML = Array.from({length:p.total_chapters}, (_,i)=>i+1).map(n =>
+      `<div class="chip ${done.has(n)?"done":""}" data-n="${n}">${n}</div>`).join("");
+  }
+  $("resumeBtn").disabled = !["failed","paused"].includes(s.status);
+  if (s.error) log(`[error] ${s.error}`);
+}
+
+async function renderBoard(s) {
+  const b = await api(`/api/runs/${runId}/board`);
+  if (!b.judge_report && !Object.keys(b.candidates).length) return;
+  $("boardSec").classList.remove("hidden");
+  const evals = Object.fromEntries((b.judge_report?.evaluations || []).map(e => [e.branch_id.slice(0,2), e]));
+  const rec = b.judge_report?.recommended_branch?.slice(0,2);
+  $("recommendation").textContent = b.judge_report ? `裁判建议：${b.judge_report.recommendation}` : "";
+  const canSelect = s.status === "awaiting_selection";
+  $("selectBox").classList.toggle("hidden", !canSelect);
+  $("board").innerHTML = Object.entries(b.candidates).sort().map(([code, c]) => {
+    const e = evals[code]; const text = Object.keys(c.chapters).sort((a,b)=>a-b).map(k => `【第${k}章 ${c.titles[k]||""}】\n${c.chapters[k]}`).join("\n\n");
+    return `<div class="card ${code===rec?"recommended":""}">
+      <div class="row"><strong>${LABELS[code]}</strong><span style="flex:1"></span>${b.winning_branch===code?"✅ 已钦定":""}</div>
+      ${e ? `<div class="score">${e.total_score}<span class="status"> / 100</span></div>
+      <div class="dims">${DIMS.map(([k,n,m]) => `<span>${n}</span><span>${e[k]} / ${m}</span>`).join("")}</div>
+      <div class="warn">毒点：${esc(e.fatal_flaw_warning)}</div>` : ""}
+      ${c.mainline_preview ? `<div class="status">主线预览：${esc(c.mainline_preview)}</div>` : ""}
+      <div class="prose">${esc(text)}</div>
+      ${canSelect ? `<button data-select="${code}">钦定 ${code} 进入量产</button>` : ""}
+    </div>`; }).join("");
+}
+
+$("board").addEventListener("click", async (ev) => {
+  const code = ev.target.dataset?.select; if (!code) return;
+  try { await api(`/api/runs/${runId}/selection`, {method:"POST", body:JSON.stringify({winning_branch:code, notes:$("notes").value})}); log(`已钦定 ${code}`); refresh(); }
+  catch (e) { alert(e.message); }
+});
+$("chapters").addEventListener("click", async (ev) => {
+  const n = ev.target.dataset?.n; if (!n || !ev.target.classList.contains("done")) return;
+  const c = await api(`/api/runs/${runId}/chapters/${n}`);
+  $("chapterView").classList.remove("hidden"); $("chapterView").textContent = `第${c.chapter}章 ${c.title}\n\n${c.text}`;
+});
+$("startBtn").onclick = async () => {
+  try {
+    const total = parseInt($("totalChapters").value, 10) || 60;
+    const r = await api("/api/runs", {method:"POST", body:JSON.stringify({raw_ch1_3:$("raw").value, title:$("title").value, settings:{total_chapters: total, arc_size: Math.min(12, total)}})});
+    log(`已创建 run ${r.run_id}`); openRun(r.run_id);
+  } catch (e) { alert(e.message); }
+};
+$("resumeBtn").onclick = async () => { try { await api(`/api/runs/${runId}/resume`, {method:"POST"}); refresh(); } catch (e) { alert(e.message); } };
+$("openBtn").onclick = () => $("runIdInput").value && openRun($("runIdInput").value.trim());
+if (location.hash.length > 1) openRun(location.hash.slice(1));
+</script>
+</body>
+</html>

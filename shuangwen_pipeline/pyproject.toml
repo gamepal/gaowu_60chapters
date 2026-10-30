@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shuangwen-pipeline"
+version = "0.1.0"
+description = "多智能体网文生产系统：语义剥离 → 三路赛马 → 量化评审 + 人工定标 → 60章节拍 → 滚动连载"
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2.6",
+  "langgraph>=0.3",
+  "litellm>=1.60",
+  "fastapi>=0.110",
+  "uvicorn>=0.27",
+]
+
+[project.optional-dependencies]
+sqlite = ["langgraph-checkpoint-sqlite>=2.0", "aiosqlite"]
+postgres = ["langgraph-checkpoint-postgres>=2.0", "psycopg[binary,pool]>=3.1"]
+redis = ["redis>=5.0"]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "httpx>=0.27", "langgraph-checkpoint-sqlite>=2.0", "aiosqlite"]
+
+[project.scripts]
+shuangwen = "shuangwen.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+shuangwen = ["static/*.html"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+pythonpath = ["src"]
